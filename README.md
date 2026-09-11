@@ -1,2 +1,16 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# l1_dart
+
+Учебный проект на языке Dart. Демонстрирует основы синтаксиса
+(переменные, коллекции, функции) и содержит анализатор оценок студентов.
+
+## Автор
+
+- **Имя:** Дмитрий 
+- **Группа:** ИСП-243
+
+## Запуск
+
+1. Клонировать репозиторий: `git clone <url>`
+2. Перейти в папку: `cd l1_dart`
+3. Установить зависимости: `dart pub get`
+4. Запустить: `dart run`
