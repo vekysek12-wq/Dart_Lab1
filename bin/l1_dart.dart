@@ -1,92 +1,69 @@
+import 'dart:math';
+
+double averange(List<int> grades) {
+  if (grades.isEmpty) return 0;
+  int sum = 0;
+  for (var grade in grades) {
+    sum += grade;
+  }
+  return sum / grades.length;
+}
+
+int maxGrade(List<int> grades) {
+  if (grades.isEmpty) return 0;          
+  int max = grades[0];
+  for (var grade in grades) {
+    if (grade > max) max = grade;       
+  }
+  return max;
+}
+
+int minGrade(List<int> grades) {
+  if (grades.isEmpty) return 0;          
+  int min = grades[0];
+  for (var grade in grades) {
+    if (grade < min) min = grade;
+  }
+  return min;
+}
+
+String leterGrade(double avg) {
+  if (avg >= 4.5) return "Отлично";
+  if (avg >= 3.5) return "Хорошо";
+  if (avg >= 2.5) return "Удовлетворительно";
+  return "Неудовлетворительно";
+}
+
+void printStats({required String name, required List<int> grades}) {
+  double avg = averange(grades);
+  print(" $name");
+  print("Оценки: $grades");
+  print("Среднее: ${avg.toStringAsFixed(2)}");  
+  print("Макс: ${maxGrade(grades)}, Мин: ${minGrade(grades)}");
+  print("Итог: ${leterGrade(avg)}");
+  print("");
+}
 
 void main() {
-  
-  String day = "сб";
-  switch (day){
-    case "сб":
-    case "вс":
-      print("Выходной");
-      break;
-  }
-  
-  for (int i = 0; i < 5; i++) {
-    print(i);
-  }
-  int sc2 = 875;
-  
-  
-  String grade;
-  if (sc2 >= 90){
-    grade = "A";
-  } else if (sc2 >= 75){
-    grade = "B";
-  } else {
-    grade = "C";
-  }
-  print(grade);
-  var x = 4;
+  Map<String, List<int>> students = {
+    "Артём Иванов": [5, 4, 5, 3, 4, 5],
+    "Мария Петрова": [4, 4, 5, 5, 4, 5],
+    "Иван Сидоров": [3, 3, 4, 2, 3, 4],
+  };
 
-  descPet(name: "barsek", age: 3);
-  descPet(name:  "Sharek", species: "pesek");
+  print("Анализатор оценок");
 
+  students.forEach((name, grades) {
+    printStats(name: name, grades: grades);
+  });
 
-  List<String> names = ["artem", "mariaa", "Evan"];
-  List<String> upper = names.map((name) => name.toUpperCase()).toList();
-  print(upper);
+  print("Общая статистика");
+  int totalStudents = students.length;
+  print("Всего студентов: $totalStudents");
 
-  print(greet("arara"));
-  print(greet("ERERER"));
-  String name = "RRR";
-  int age = 20;
-  double het = 1.2;
-  bool iss = true;
-  print("Hola $name,  $age");
-  print("tebe ${age + 5}");
-  print("rost:$het' $iss ");
-
-  var count = 0;
-  var title = "Dart";
-  print("$count: $title");
-
-  const String apname = "lab1";
-  final int styear = 2026;
-  print("$apname started in $styear");
-
-  String? city = null;
-  if (city != null) {
-    print(city.toUpperCase());
-  }
-  List<String> f = ["rr", "tt", "yy"];
-  f.add('ee');
-  print(f[0]);
-  print(f.length);
-
-  List<String> f2 = ["rr", "tt", "yy"];
-  for (var f in f2) {
-    print(f);
-  }
-
-  Map<String, dynamic> pers = {'name ': 'ARE', 'age': 20};
-  print(pers['name']);
-  pers['city'] = 'WAR';
-
-
-  print(repeat("ab"));       
-  print(repeat("ab", 3));    
-}
-
-String greet(String name) {
-  return "ff,$name!";
-}
-
-String repeat(String text, [int times = 2]) {
-  String result = "";
-  for (int i = 0; i < times; i++) {
-    result += text;
-  }
-  return result;
-}
-
-void descPet({required String name, String species = "cate", int age = 0 }){
-  print("$name - $species, возраст $age");
+  int excellentCount = 0;
+  students.forEach((name, grades) {
+    if (averange(grades) >= 4.5) excellentCount++;
+  });
+  print("Отличников: $excellentCount из $totalStudents");
 }
