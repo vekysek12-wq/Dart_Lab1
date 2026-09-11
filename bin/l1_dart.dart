@@ -1,5 +1,29 @@
 
 void main() {
+  
+  String day = "сб";
+  switch (day){
+    case "сб":
+    case "вс":
+      print("Выходной");
+      break;
+  }
+  
+  for (int i = 0; i < 5; i++) {
+    print(i);
+  }
+  int sc2 = 875;
+  
+  
+  String grade;
+  if (sc2 >= 90){
+    grade = "A";
+  } else if (sc2 >= 75){
+    grade = "B";
+  } else {
+    grade = "C";
+  }
+  print(grade);
   var x = 4;
 
   descPet(name: "barsek", age: 3);
